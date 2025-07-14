@@ -5,6 +5,9 @@ var direcao: String
 const GRAVITY = 800
 const PULO = -400
 var velocidade: int = 400
+
+signal ataque
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Animacao.play("correr_dir")
@@ -32,6 +35,7 @@ func _physics_process(delta: float) -> void:
 				$Animacao.play("ataque_dir")
 			if direcao == 'esq':
 				$Animacao.play("ataque_esq")
+			ataque.emit()
 				
 		elif Input.is_action_pressed("direita"):
 			$Animacao.play("correr_dir")

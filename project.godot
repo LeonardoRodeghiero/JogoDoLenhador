@@ -43,6 +43,12 @@ ataque={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="jogador"
+2d_physics/layer_2="arvores"
+2d_physics/layer_3="chao"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
