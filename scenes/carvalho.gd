@@ -10,14 +10,15 @@ func _ready() -> void:
 	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func caindo():
 	var tween = create_tween()
 	tween.tween_property($Marker2D, "rotation", deg_to_rad(-90), 4).set_trans(Tween.TRANS_EXPO)
-
+	await get_tree().create_timer(5).timeout
+	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
 	player_in_range = true
@@ -27,7 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 	ja_entrou = true
 
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	player_in_range = false
 
 func _on_ataque_recebido():
@@ -36,3 +37,4 @@ func _on_ataque_recebido():
 		hits -= 1
 		if hits <= 0:
 			caindo()
+			

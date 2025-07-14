@@ -1,46 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4k1h5gvlculy"]
+[gd_scene load_steps=4 format=3 uid="uid://b4k1h5gvlculy"]
 
 [ext_resource type="Script" uid="uid://dojfava7gdt8t" path="res://scenes/carvalho.gd" id="1_37gbl"]
 [ext_resource type="Texture2D" uid="uid://2j4wrjro6iqg" path="res://graphics/arvores/carvalho/carvalho.png" id="1_i4u5t"]
-
-[sub_resource type="Animation" id="Animation_37gbl"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_i4u5t"]
-resource_name = "caindo"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Marker2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.8, 1.46667, 1.86667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.0872665, -0.349066, -1.5708]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpkay"]
-_data = {
-&"RESET": SubResource("Animation_37gbl"),
-&"caindo": SubResource("Animation_i4u5t")
-}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i4u5t"]
 radius = 49.0
@@ -48,11 +9,6 @@ height = 244.0
 
 [node name="Carvalho" type="Area2D"]
 script = ExtResource("1_37gbl")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hpkay")
-}
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(6, 236)

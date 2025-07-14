@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://47nbc6es8nja"]
+
+[ext_resource type="TileSet" uid="uid://dwdwskihbq384" path="res://TileSets/chao.tres" id="1_2l1yk"]
+
+[node name="Chao" type="TileMapLayer"]
+tile_set = ExtResource("1_2l1yk")

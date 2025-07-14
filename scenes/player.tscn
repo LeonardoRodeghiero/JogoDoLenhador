@@ -190,4 +190,7 @@ shape = SubResource("CapsuleShape2D_oprun")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_wnwbv")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="ataque" from="." to="." method="_on_ataque"]
+[connection signal="animation_looped" from="Animacao" to="." method="_on_animacao_animation_looped"]
