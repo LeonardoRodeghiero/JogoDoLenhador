@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnfki5xjcetqg"]
+
+[ext_resource type="PackedScene" uid="uid://byasu87s3xlay" path="res://scenes/player.tscn" id="1_p86sy"]
+[ext_resource type="PackedScene" uid="uid://bo864qt5sqwet" path="res://scenes/chao_invisivel_teste.tscn" id="2_sj5is"]
+
+[node name="Cena" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_p86sy")]
+position = Vector2(542, 311)
+slide_on_ceiling = false
+
+[node name="ChaoInvisivelTeste" parent="." instance=ExtResource("2_sj5is")]
+position = Vector2(-5, 386)
