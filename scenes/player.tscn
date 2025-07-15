@@ -203,10 +203,10 @@ animations = [{
 radius = 42.0
 height = 136.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wnwbv"]
-radius = 88.459
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hax0n"]
+size = Vector2(50.5, 140)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["entidade"]]
 collision_mask = 6
 script = ExtResource("1_oprun")
 
@@ -222,7 +222,7 @@ shape = SubResource("CapsuleShape2D_oprun")
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-shape = SubResource("CircleShape2D_wnwbv")
+shape = SubResource("RectangleShape2D_hax0n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

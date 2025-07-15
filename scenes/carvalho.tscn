@@ -1,28 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4k1h5gvlculy"]
+[gd_scene load_steps=8 format=3 uid="uid://b4k1h5gvlculy"]
 
 [ext_resource type="Script" uid="uid://dojfava7gdt8t" path="res://scenes/carvalho.gd" id="1_37gbl"]
-[ext_resource type="Texture2D" uid="uid://2j4wrjro6iqg" path="res://graphics/arvores/carvalho/carvalho.png" id="1_i4u5t"]
+[ext_resource type="Texture2D" uid="uid://d34l4uy73qr13" path="res://graphics/arvores/carvalho/carvalho_sem_toco.png" id="2_37gbl"]
+[ext_resource type="Texture2D" uid="uid://bathr3n4w8to4" path="res://graphics/arvores/carvalho/toco.png" id="2_hpkay"]
+
+[sub_resource type="Animation" id="Animation_hpkay"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_37gbl"]
+resource_name = "cortando"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrm0y"]
+_data = {
+&"RESET": SubResource("Animation_hpkay"),
+&"cortando": SubResource("Animation_37gbl")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i4u5t"]
 radius = 49.0
 height = 244.0
 
-[node name="Carvalho" type="Area2D"]
+[node name="Carvalho" type="Area2D" groups=["arvores"]]
 script = ExtResource("1_37gbl")
 
+[node name="Toco" type="Sprite2D" parent="."]
+position = Vector2(4, 228)
+texture = ExtResource("2_hpkay")
+
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(6, 236)
+position = Vector2(0, 192)
 
 [node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
-position = Vector2(0, -234)
-texture = ExtResource("1_i4u5t")
+position = Vector2(6, -190)
+texture = ExtResource("2_37gbl")
 hframes = 2
-vframes = 2
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Marker2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_xrm0y")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3, 121)
 rotation = -3.14159
 shape = SubResource("CapsuleShape2D_i4u5t")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

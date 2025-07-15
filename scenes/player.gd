@@ -8,10 +8,12 @@ const PULO = -400
 var velocidade: int = 400
 var pulando: bool = false
 var parado: bool = false
+var terminou_ataque: bool = false
 signal ataque
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.player = self
 	$Animacao.play("correr_dir")
 	direcao = 'dir'
 	$Animacao.stop()
@@ -22,7 +24,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction_velocity:Vector2
 	
-	if Input.is_action_pressed("esquerda") and Input.is_action_pressed("direita") and $Animacao.animation not in ['ataque_dir', 'ataque_esq']:
+	#if $Animacao.is_playing() and ($Animacao.animation == "ataque_dir" or $Animacao.animation == "ataque_esq"):
+		#atacando = true
+	#else:
+		#atacando = false
+	
+	
+	if Input.is_action_pressed("esquerda") and Input.is_action_pressed("direita") and $Animacao.animation not in ['ataque_dir', 'ataque_esq', 'pulo_dir', 'pulo_esq']:
 		if direcao == 'dir':
 			$Animacao.play("rest_dir")
 		if direcao == 'esq':
@@ -49,14 +57,16 @@ func _physics_process(delta: float) -> void:
 			#print("ta no chao")
 		if Input.is_action_pressed("ataque"):
 			if direcao == 'dir':
-				$Animacao.play("ataque_dir")
+				iniciar_ataque("ataque_dir")
 			elif direcao == 'esq':
-				$Animacao.play("ataque_esq")
+				iniciar_ataque("ataque_esq")
 		
 		elif Input.is_action_pressed("direita") and not parado:
 			$Animacao.play("correr_dir")
+			atualizar_area_ataque(direction_velocity)
 		elif Input.is_action_pressed("esquerda") and not parado:
 			$Animacao.play("correr_esq")
+			atualizar_area_ataque(direction_velocity)
 		
 		
 		elif not Input.is_action_pressed("direita") and not  Input.is_action_pressed("esquerda"):
@@ -99,18 +109,24 @@ func _physics_process(delta: float) -> void:
 			#if $Animacao.animation == "pulo_esq" and $Animacao.frame == 2:
 				#$Animacao.pause()
 	velocity.x = direction_velocity.x * velocidade
-
+	
 	#print(pulando)
-	
-	
 	
 	
 	move_and_slide()
 
+func iniciar_ataque(animacao):
+	terminou_ataque = false
+	$Animacao.play(animacao)
+	
+func atualizar_area_ataque(direction_velocity: Vector2):
+	$AttackArea.position.x = 15 * direction_velocity[0]
 
 	
-
+	
+	
 func _on_animacao_animation_looped() -> void:
 	if $Animacao.animation == 'ataque_dir' or $Animacao.animation == 'ataque_esq':
-		print("terminou o ataque")
+		terminou_ataque = true
+		print("sinal de ataque emitido")
 		ataque.emit()
