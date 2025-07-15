@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqauu14ovyo7j"
-path="res://.godot/imported/jump_esq.png-78ea7c045e35f21ecb905ecc530222b0.ctex"
+uid="uid://cp3v4jyjw7jg5"
+path="res://.godot/imported/jump_dir_1.png-5764d153c14eaa33a09b2ec673dcc032.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/player/jumping/jump_esq.png"
-dest_files=["res://.godot/imported/jump_esq.png-78ea7c045e35f21ecb905ecc530222b0.ctex"]
+source_file="res://graphics/player/jumping/dir/jump_dir_1.png"
+dest_files=["res://.godot/imported/jump_dir_1.png-5764d153c14eaa33a09b2ec673dcc032.ctex"]
 
 [params]
 

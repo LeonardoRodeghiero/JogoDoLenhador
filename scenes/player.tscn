@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://byasu87s3xlay"]
+[gd_scene load_steps=41 format=3 uid="uid://byasu87s3xlay"]
 
 [ext_resource type="Script" uid="uid://hj0i5208ok84" path="res://scenes/player.gd" id="1_oprun"]
 [ext_resource type="Texture2D" uid="uid://bsl6t07fijqco" path="res://graphics/player/attacking/dir/attack_dir_1.png" id="2_a38lo"]
@@ -29,8 +29,14 @@
 [ext_resource type="Texture2D" uid="uid://dlxrvtwpyqm6w" path="res://graphics/player/walking/player_esq/player_esq_7.png" id="13_60mlk"]
 [ext_resource type="Texture2D" uid="uid://bts5i5kqgyix3" path="res://graphics/player/running/esq/run_esq_3.png" id="13_487ah"]
 [ext_resource type="Texture2D" uid="uid://omuyh0lefiu5" path="res://graphics/player/walking/player_esq/player_esq_8.png" id="14_i4ail"]
-[ext_resource type="Texture2D" uid="uid://c6ayryggypew1" path="res://graphics/player/jumping/jump_dir.png" id="18_4r5pv"]
-[ext_resource type="Texture2D" uid="uid://dqauu14ovyo7j" path="res://graphics/player/jumping/jump_esq.png" id="19_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://cp3v4jyjw7jg5" path="res://graphics/player/jumping/dir/jump_dir_1.png" id="30_487ah"]
+[ext_resource type="Texture2D" uid="uid://dly153hsga7co" path="res://graphics/player/jumping/dir/jump_dir_2.png" id="31_md1ol"]
+[ext_resource type="Texture2D" uid="uid://b0t4dxwbeqkk1" path="res://graphics/player/jumping/dir/jump_dir_3.png" id="32_bj30b"]
+[ext_resource type="Texture2D" uid="uid://dff7w0motu3u2" path="res://graphics/player/jumping/esq/jump_esq_1.png" id="33_bj30b"]
+[ext_resource type="Texture2D" uid="uid://d10460au27de7" path="res://graphics/player/jumping/esq/jump_esq_2.png" id="34_jc3p3"]
+[ext_resource type="Texture2D" uid="uid://dloh3cl6obj67" path="res://graphics/player/jumping/esq/jump_esq_3.png" id="35_hax0n"]
+[ext_resource type="Texture2D" uid="uid://vo01bdwx1sor" path="res://graphics/player/resting/rest_dir.png" id="36_jc3p3"]
+[ext_resource type="Texture2D" uid="uid://c74qdg5uaj2qk" path="res://graphics/player/resting/rest_esq.png" id="37_hax0n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8vuu"]
 animations = [{
@@ -149,19 +155,47 @@ animations = [{
 "speed": 30.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_4r5pv")
+"duration": 1.7,
+"texture": ExtResource("30_487ah")
+}, {
+"duration": 1.5,
+"texture": ExtResource("31_md1ol")
+}, {
+"duration": 1.2,
+"texture": ExtResource("32_bj30b")
 }],
 "loop": false,
 "name": &"pulo_dir",
 "speed": 30.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("19_4r5pv")
+"duration": 1.7,
+"texture": ExtResource("33_bj30b")
+}, {
+"duration": 1.5,
+"texture": ExtResource("34_jc3p3")
+}, {
+"duration": 1.2,
+"texture": ExtResource("35_hax0n")
 }],
 "loop": false,
 "name": &"pulo_esq",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_jc3p3")
+}],
+"loop": false,
+"name": &"rest_dir",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_hax0n")
+}],
+"loop": false,
+"name": &"rest_esq",
 "speed": 30.0
 }]
 
@@ -179,7 +213,7 @@ script = ExtResource("1_oprun")
 [node name="Animacao" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_u8vuu")
-animation = &"correr_esq"
+animation = &"rest_esq"
 speed_scale = 0.45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 
 func caindo():
 	var tween = create_tween()
-	tween.tween_property($Marker2D, "rotation", deg_to_rad(-90), 4).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property($Marker2D, "rotation", deg_to_rad(90), 4).set_trans(Tween.TRANS_EXPO)
 	await get_tree().create_timer(5).timeout
 	queue_free()
 
