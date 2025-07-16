@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfcm6ma6ryfy1"]
+
+[ext_resource type="Script" uid="uid://qwbp1nou5ug7" path="res://scenes/CenasInimigos/inimigo_template.gd" id="1_31tan"]
+
+[node name="Inimigo" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_31tan")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

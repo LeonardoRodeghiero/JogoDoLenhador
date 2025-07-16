@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://buqak1dieno5r"]
+
+[ext_resource type="PackedScene" uid="uid://cfcm6ma6ryfy1" path="res://scenes/CenasInimigos/inimigo_template.tscn" id="1_cy8wx"]
+[ext_resource type="Script" uid="uid://dbptkv58qby4t" path="res://scenes/CenasInimigos/passaro_arvore.gd" id="2_eby6t"]
+[ext_resource type="Texture2D" uid="uid://dotahggcyv1cw" path="res://graphics/inimigos/passaro_arvore/passaro_arvore.png" id="2_g17oj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cy8wx"]
+radius = 38.0132
+
+[sub_resource type="Animation" id="Animation_d0uhe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xkjdw"]
+resource_name = "flying"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1m1at"]
+_data = {
+&"RESET": SubResource("Animation_d0uhe"),
+&"flying": SubResource("Animation_xkjdw")
+}
+
+[node name="PassaroArvore" instance=ExtResource("1_cy8wx")]
+script = ExtResource("2_eby6t")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_g17oj")
+hframes = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_cy8wx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_1m1at")
+}

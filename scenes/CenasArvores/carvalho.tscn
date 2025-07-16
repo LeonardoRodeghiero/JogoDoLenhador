@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4k1h5gvlculy"]
 
-[ext_resource type="Script" uid="uid://dojfava7gdt8t" path="res://scenes/carvalho.gd" id="1_37gbl"]
+[ext_resource type="Script" uid="uid://dojfava7gdt8t" path="res://scenes/CenasArvores/carvalho.gd" id="1_37gbl"]
 [ext_resource type="Texture2D" uid="uid://d34l4uy73qr13" path="res://graphics/arvores/carvalho/carvalho_sem_toco.png" id="2_37gbl"]
 [ext_resource type="Texture2D" uid="uid://bathr3n4w8to4" path="res://graphics/arvores/carvalho/toco.png" id="2_hpkay"]
 
@@ -46,6 +46,8 @@ radius = 49.0
 height = 244.0
 
 [node name="Carvalho" type="Area2D" groups=["arvores"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_37gbl")
 
 [node name="Toco" type="Sprite2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://8byy0byfuuhq"]
 
-[ext_resource type="Script" uid="uid://uvd0nm8fmiy1" path="res://scenes/machado_arr.gd" id="1_0pdxv"]
+[ext_resource type="Script" uid="uid://uvd0nm8fmiy1" path="res://scenes/CenasPlayer/machado_arr.gd" id="1_0pdxv"]
 [ext_resource type="Texture2D" uid="uid://nlxr5w7vgkrm" path="res://graphics/player/arremessavel/machado_arremessavel.png" id="1_i5hww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m57cc"]

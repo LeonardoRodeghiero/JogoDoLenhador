@@ -10,7 +10,7 @@ var pulando: bool = false
 var parado: bool = false
 var terminou_ataque: bool = false
 
-var machado_scene: PackedScene = preload("res://scenes/machado_arr.tscn")
+var machado_scene: PackedScene = preload("res://scenes/CenasPlayer/machado_arr.tscn")
 var pode_arremessar: bool = true
 var arremessando: bool = false
 signal ataque
@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 		#atacando = true
 	#else:
 		#atacando = false
-	print(arremessando)
 	if Input.is_action_pressed("arremessavel") and $Animacao.animation not in ['ataque_dir', 'ataque_esq']:
 		if pode_arremessar:
 			$Animacao.play("arremesso_dir")

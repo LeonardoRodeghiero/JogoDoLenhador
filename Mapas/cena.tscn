@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://cnfki5xjcetqg"]
+[gd_scene load_steps=7 format=4 uid="uid://cnfki5xjcetqg"]
 
 [ext_resource type="Script" uid="uid://dnb5jqnt5tonj" path="res://Mapas/MainScene.gd" id="1_d7c3a"]
-[ext_resource type="PackedScene" uid="uid://byasu87s3xlay" path="res://scenes/player.tscn" id="1_p86sy"]
+[ext_resource type="PackedScene" uid="uid://byasu87s3xlay" path="res://scenes/CenasPlayer/player.tscn" id="1_p86sy"]
 [ext_resource type="TileSet" uid="uid://dwdwskihbq384" path="res://TileSets/chao.tres" id="3_d7c3a"]
-[ext_resource type="PackedScene" uid="uid://b4k1h5gvlculy" path="res://scenes/carvalho.tscn" id="3_h1nd1"]
+[ext_resource type="PackedScene" uid="uid://b4k1h5gvlculy" path="res://scenes/CenasArvores/carvalho.tscn" id="3_h1nd1"]
+[ext_resource type="PackedScene" uid="uid://buqak1dieno5r" path="res://scenes/CenasInimigos/passaro_arvore.tscn" id="5_fn7r4"]
+[ext_resource type="PackedScene" uid="uid://cot5blswo3eeu" path="res://scenes/CenasInimigos/inimigo_arvore.tscn" id="6_noqd2"]
 
 [node name="Cena" type="Node2D"]
 script = ExtResource("1_d7c3a")
@@ -29,3 +31,10 @@ tile_map_data = PackedByteArray("AAAAABgAAgABAAAAAAABABgAAgABAAAAAAACABgAAgACAAA
 tile_set = ExtResource("3_d7c3a")
 
 [node name="Arremessaveis" type="Node2D" parent="."]
+
+[node name="PassaroArvore" parent="." instance=ExtResource("5_fn7r4")]
+position = Vector2(537, 142)
+
+[node name="InimigoArvore" parent="." instance=ExtResource("6_noqd2")]
+position = Vector2(803, 351)
+collision_mask = 0
