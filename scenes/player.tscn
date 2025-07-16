@@ -1,8 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://byasu87s3xlay"]
+[gd_scene load_steps=42 format=3 uid="uid://byasu87s3xlay"]
 
 [ext_resource type="Script" uid="uid://hj0i5208ok84" path="res://scenes/player.gd" id="1_oprun"]
 [ext_resource type="Texture2D" uid="uid://bsl6t07fijqco" path="res://graphics/player/attacking/dir/attack_dir_1.png" id="2_a38lo"]
 [ext_resource type="Texture2D" uid="uid://qly4qc558e4n" path="res://graphics/player/walking/player_dir/player_dir_1.png" id="2_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://66xhqcgfmlmo" path="res://graphics/player/arremessavel/arremessando.png" id="2_t4otl"]
 [ext_resource type="Texture2D" uid="uid://dsga2u1qpuago" path="res://graphics/player/attacking/dir/attack_dir_2.png" id="3_4ni07"]
 [ext_resource type="Texture2D" uid="uid://bro71vy70icuv" path="res://graphics/player/walking/player_dir/player_dir_2.png" id="3_fulsm"]
 [ext_resource type="Texture2D" uid="uid://bpteufpjn1k20" path="res://graphics/player/walking/player_dir/player_dir_3.png" id="4_4r5pv"]
@@ -40,6 +41,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8vuu"]
 animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": ExtResource("2_t4otl")
+}],
+"loop": false,
+"name": &"arremesso_dir",
+"speed": 30.0
+}, {
 "frames": [{
 "duration": 2.0,
 "texture": ExtResource("2_a38lo")
@@ -213,7 +222,7 @@ script = ExtResource("1_oprun")
 [node name="Animacao" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_u8vuu")
-animation = &"rest_esq"
+animation = &"arremesso_dir"
 speed_scale = 0.45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -226,5 +235,13 @@ shape = SubResource("RectangleShape2D_hax0n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="ArremessavelTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="arremessavel" from="." to="." method="_on_arremessavel"]
 [connection signal="ataque" from="." to="." method="_on_ataque"]
 [connection signal="animation_looped" from="Animacao" to="." method="_on_animacao_animation_looped"]
+[connection signal="timeout" from="Timers/ArremessavelTimer" to="." method="_on_arremessavel_timer_timeout"]

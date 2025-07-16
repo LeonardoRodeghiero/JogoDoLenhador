@@ -9,8 +9,12 @@ var velocidade: int = 400
 var pulando: bool = false
 var parado: bool = false
 var terminou_ataque: bool = false
-signal ataque
 
+var machado_scene: PackedScene = preload("res://scenes/machado_arr.tscn")
+var pode_arremessar: bool = true
+var arremessando: bool = false
+signal ataque
+signal arremessavel()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.player = self
@@ -28,7 +32,14 @@ func _physics_process(delta: float) -> void:
 		#atacando = true
 	#else:
 		#atacando = false
-	
+	print(arremessando)
+	if Input.is_action_pressed("arremessavel") and $Animacao.animation not in ['ataque_dir', 'ataque_esq']:
+		if pode_arremessar:
+			$Animacao.play("arremesso_dir")
+			arremessavel.emit()
+			$Timers/ArremessavelTimer.start()
+			pode_arremessar = false
+			
 	
 	if Input.is_action_pressed("esquerda") and Input.is_action_pressed("direita") and $Animacao.animation not in ['ataque_dir', 'ataque_esq', 'pulo_dir', 'pulo_esq']:
 		if direcao == 'dir':
@@ -61,6 +72,8 @@ func _physics_process(delta: float) -> void:
 			elif direcao == 'esq':
 				iniciar_ataque("ataque_esq")
 		
+			
+			
 		elif Input.is_action_pressed("direita") and not parado:
 			$Animacao.play("correr_dir")
 			atualizar_area_ataque(direction_velocity)
@@ -122,7 +135,7 @@ func iniciar_ataque(animacao):
 func atualizar_area_ataque(direction_velocity: Vector2):
 	$AttackArea.position.x = 15 * direction_velocity[0]
 
-	
+
 	
 	
 func _on_animacao_animation_looped() -> void:
@@ -130,3 +143,15 @@ func _on_animacao_animation_looped() -> void:
 		terminou_ataque = true
 		print("sinal de ataque emitido")
 		ataque.emit()
+
+
+func _on_arremessavel() -> void:
+	#print("arremessou no y ", pos, direcao)
+	var machado = machado_scene.instantiate() as Area2D
+	machado.position = self.position
+
+	$"../Arremessaveis".add_child(machado)
+
+
+func _on_arremessavel_timer_timeout() -> void:
+	pode_arremessar = true
