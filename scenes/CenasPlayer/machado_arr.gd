@@ -18,9 +18,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += direction * 700 * delta
 	
-	
+
 	
 
 
 func _on_destroy_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	print("colidiu com")
+	body.vida -= Globals.player.dano_longo_alcance
+	if body.vida <= 0:
+		body.queue_free()

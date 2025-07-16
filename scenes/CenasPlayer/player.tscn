@@ -222,7 +222,8 @@ script = ExtResource("1_oprun")
 [node name="Animacao" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_u8vuu")
-animation = &"arremesso_dir"
+animation = &"ataque_dir"
+frame_progress = 0.0154965
 speed_scale = 0.45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

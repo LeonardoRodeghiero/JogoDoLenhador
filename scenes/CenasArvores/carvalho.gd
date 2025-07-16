@@ -1,6 +1,6 @@
 extends Area2D
 
-var hits: int = 3
+var vida: int = 30
 var player_in_range: bool = false
 var ja_entrou: bool = false
 # Called when the node enters the scene tree for the first time.
@@ -19,14 +19,14 @@ func caindo():
 
 
 
-func _on_ataque_recebido():
+func _on_ataque_recebido(dano):
+	print(dano)
 	if player_in_range:
 		print("Jogador atacou dentro da área da árvore!")
-		hits -= 1
-		print(hits)
-		if hits == 0:
+		vida -= dano
+		if vida == 0:
 			$Marker2D/AnimationPlayer.play("cortando")
-		if hits <= 0:
+		if vida <= 0:
 			caindo()
 			
 

@@ -61,3 +61,6 @@ shape = SubResource("CircleShape2D_cy8wx")
 libraries = {
 &"": SubResource("AnimationLibrary_1m1at")
 }
+
+[node name="BarraVida" parent="." index="3"]
+visible = false

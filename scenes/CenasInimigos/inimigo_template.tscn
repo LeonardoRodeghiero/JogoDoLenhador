@@ -10,3 +10,12 @@ script = ExtResource("1_31tan")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="BarraVida" type="Node2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="BarraVida"]
+modulate = Color(1, 0, 0, 1)
+offset_right = 72.0
+offset_bottom = 15.0
+value = 100.0
+show_percentage = false

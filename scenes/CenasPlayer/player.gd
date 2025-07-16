@@ -9,11 +9,14 @@ var velocidade: int = 400
 var pulando: bool = false
 var parado: bool = false
 var terminou_ataque: bool = false
+var dano_ataque_fisico: int = 10
+var dano_longo_alcance: int = 10
 
 var machado_scene: PackedScene = preload("res://scenes/CenasPlayer/machado_arr.tscn")
 var pode_arremessar: bool = true
 var arremessando: bool = false
-signal ataque
+
+signal ataque(dano)
 signal arremessavel()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -139,9 +142,10 @@ func atualizar_area_ataque(direction_velocity: Vector2):
 	
 func _on_animacao_animation_looped() -> void:
 	if $Animacao.animation == 'ataque_dir' or $Animacao.animation == 'ataque_esq':
+		print(dano_ataque_fisico)
 		terminou_ataque = true
 		print("sinal de ataque emitido")
-		ataque.emit()
+		ataque.emit(dano_ataque_fisico)
 
 
 func _on_arremessavel() -> void:

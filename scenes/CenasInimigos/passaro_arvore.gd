@@ -8,9 +8,8 @@ func _ready() -> void:
 	scale.x = -1
 	$AnimationPlayer.play("flying")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	velocity = direcao * 200
 	move_and_slide()
 	if global_position.x < 200:
