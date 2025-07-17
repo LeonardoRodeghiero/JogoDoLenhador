@@ -16,13 +16,10 @@ position = Vector2(546, 318)
 slide_on_ceiling = false
 
 [node name="Carvalho" parent="." instance=ExtResource("3_h1nd1")]
-position = Vector2(681, 161)
+position = Vector2(990, 144)
 
 [node name="Carvalho2" parent="." instance=ExtResource("3_h1nd1")]
-position = Vector2(912, 152)
-
-[node name="Carvalho3" parent="." instance=ExtResource("3_h1nd1")]
-position = Vector2(456, 144)
+position = Vector2(658, 150)
 
 [node name="Chao" type="Node2D" parent="."]
 

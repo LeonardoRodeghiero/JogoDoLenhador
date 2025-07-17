@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvqa7dan32gjo"
-path="res://.godot/imported/player_esq_4.png-e25c34c1f419ac724330a760b70f4c5c.ctex"
+uid="uid://d2w4arv0prcup"
+path="res://.godot/imported/arremessando_esq.png-f73c4978d39b9ac801e3e035f990994c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/player/walking/player_esq/player_esq_4.png"
-dest_files=["res://.godot/imported/player_esq_4.png-e25c34c1f419ac724330a760b70f4c5c.ctex"]
+source_file="res://graphics/player/arremessavel/arremessando_esq.png"
+dest_files=["res://.godot/imported/arremessando_esq.png-f73c4978d39b9ac801e3e035f990994c.ctex"]
 
 [params]
 

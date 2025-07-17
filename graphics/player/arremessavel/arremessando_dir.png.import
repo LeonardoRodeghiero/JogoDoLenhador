@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://66xhqcgfmlmo"
-path="res://.godot/imported/arremessando.png-04dd67e435a25a89778bf2cd1898faf7.ctex"
+uid="uid://cdgj8rvg7cjk6"
+path="res://.godot/imported/arremessando_dir.png-3aa8c63156542095e0d2018da70c044c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/player/arremessavel/arremessando.png"
-dest_files=["res://.godot/imported/arremessando.png-04dd67e435a25a89778bf2cd1898faf7.ctex"]
+source_file="res://graphics/player/arremessavel/arremessando_dir.png"
+dest_files=["res://.godot/imported/arremessando_dir.png-3aa8c63156542095e0d2018da70c044c.ctex"]
 
 [params]
 

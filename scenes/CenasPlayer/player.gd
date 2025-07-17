@@ -16,6 +16,10 @@ var machado_scene: PackedScene = preload("res://scenes/CenasPlayer/machado_arr.t
 var pode_arremessar: bool = true
 var arremessando: bool = false
 
+var pode_dash: bool = true
+
+
+
 signal ataque(dano)
 signal arremessavel()
 # Called when the node enters the scene tree for the first time.
@@ -37,11 +41,19 @@ func _physics_process(delta: float) -> void:
 		#atacando = false
 	if Input.is_action_pressed("arremessavel") and $Animacao.animation not in ['ataque_dir', 'ataque_esq']:
 		if pode_arremessar:
-			$Animacao.play("arremesso_dir")
+			if direcao == 'dir':
+				$Animacao.play("arremesso_dir")
+			if direcao == 'esq':
+				$Animacao.play("arremesso_esq")
+				
 			arremessavel.emit()
 			$Timers/ArremessavelTimer.start()
 			pode_arremessar = false
 			
+	if Input.is_action_pressed("dash") and pode_dash:
+		pode_dash = false
+		$Animacao.play("dash_dir")
+		$Timers/DashTimer.start()
 	
 	if Input.is_action_pressed("esquerda") and Input.is_action_pressed("direita") and $Animacao.animation not in ['ataque_dir', 'ataque_esq', 'pulo_dir', 'pulo_esq']:
 		if direcao == 'dir':
@@ -79,12 +91,13 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_pressed("direita") and not parado:
 			$Animacao.play("correr_dir")
 			atualizar_area_ataque(direction_velocity)
+			
 		elif Input.is_action_pressed("esquerda") and not parado:
 			$Animacao.play("correr_esq")
 			atualizar_area_ataque(direction_velocity)
 		
 		
-		elif not Input.is_action_pressed("direita") and not  Input.is_action_pressed("esquerda"):
+		elif not Input.is_action_pressed("direita") and not  Input.is_action_pressed("esquerda") and not Input.is_action_pressed("arremessavel"):
 			if direcao == 'dir':
 				$Animacao.play("rest_dir")
 			elif direcao == 'esq':
@@ -158,3 +171,7 @@ func _on_arremessavel() -> void:
 
 func _on_arremessavel_timer_timeout() -> void:
 	pode_arremessar = true
+
+
+func _on_dash_timer_timeout() -> void:
+	pode_dash = true

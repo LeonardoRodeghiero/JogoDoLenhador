@@ -27,7 +27,7 @@ func _on_destroy_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("colidiu com")
+	queue_free()
 	body.vida -= Globals.player.dano_longo_alcance
 	if body.vida <= 0:
 		body.queue_free()
