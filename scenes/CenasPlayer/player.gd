@@ -3,14 +3,26 @@ extends CharacterBody2D
 enum Estado { CORRENDO, ATACANDO, PULANDO }
 var estado_atual
 var direcao: String
-const GRAVITY = 800
-const PULO = -400
+
 var velocidade: int = 400
-var pulando: bool = false
 var parado: bool = false
 var terminou_ataque: bool = false
 var dano_ataque_fisico: int = 10
 var dano_longo_alcance: int = 10
+
+# PULO
+const GRAVITY = 980
+const PULO = -750
+var pulando: bool = false
+var fall_multiplier = 2.5
+
+const COYOTE_TIME = 0.1 # segundos
+var coyote_timer = 0
+
+const JUMP_BUFFER_TIME = 0.1 
+var jump_buffer_timer = 0
+
+
 
 var machado_scene: PackedScene = preload("res://scenes/CenasPlayer/machado_arr.tscn")
 var pode_arremessar: bool = true
@@ -52,10 +64,10 @@ func _physics_process(delta: float) -> void:
 			pode_arremessar = false
 		
 	# Vou deixar o dash (por enquanto), mas nao pretendo fazer	
-	if Input.is_action_pressed("dash") and pode_dash:
-		pode_dash = false
-		$Animacao.play("dash_dir")
-		$Timers/DashTimer.start()
+	#if Input.is_action_pressed("dash") and pode_dash:
+		#pode_dash = false
+		#$Animacao.play("dash_dir")
+		#$Timers/DashTimer.start()
 	
 	if Input.is_action_pressed("esquerda") and Input.is_action_pressed("direita") and $Animacao.animation not in ['ataque', 'pulo']:
 		$Animacao.play("rest")
@@ -71,10 +83,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		pulando = false
-		if $Animacao.animation == "pulo":
+		
 			
-			$Animacao.play("correr")
-			$Animacao.pause()
 		
 			#print("ta no chao")
 		if Input.is_action_pressed("ataque"):
@@ -84,29 +94,39 @@ func _physics_process(delta: float) -> void:
 		
 			
 			
-		elif Input.is_action_pressed("direita") and not parado:
-			$Animacao.play("correr")
-			
-		elif Input.is_action_pressed("esquerda") and not parado:
+		elif (Input.is_action_pressed("direita") or Input.is_action_pressed("esquerda")) and not parado and not pulando:
 			$Animacao.play("correr")
 		
 		
-		elif not Input.is_action_pressed("direita") and not  Input.is_action_pressed("esquerda") and not Input.is_action_pressed("arremessavel"):
+		
+		elif not Input.is_action_pressed("direita") and not  Input.is_action_pressed("esquerda") and not Input.is_action_pressed("arremessavel") and not Input.is_action_pressed("pulo") and not Input.is_action_pressed("ataque"):
 			
 			$Animacao.play("rest")
 			
 				
-				
-	if Input.is_action_just_pressed("pulo") and is_on_floor():
-		velocity.y += PULO
+	if is_on_floor():
+		if not Input.is_action_pressed("direita") and not Input.is_action_pressed("esquerda") and not Input.is_action_pressed("ataque") and not Input.is_action_pressed("arremessavel"):
+			$Animacao.play("rest")
+
+		coyote_timer = COYOTE_TIME
+	else:
+		coyote_timer -= delta
+		
+	
+		
+	if Input.is_action_just_pressed("pulo"):
+		jump_buffer_timer = JUMP_BUFFER_TIME
 		pulando = true
 		$Animacao.play("pulo")
 		
-	
+			
 	else:
-		
-		velocity.y += GRAVITY * delta
-		#print("nao ta no chao")
+		jump_buffer_timer -= delta
+	
+	if coyote_timer > 0 and jump_buffer_timer > 0:
+		velocity.y = PULO
+		coyote_timer = 0
+		jump_buffer_timer = 0
 	if not is_on_floor() and pulando:
 		
 		if $Animacao.frame == 2:
@@ -114,15 +134,10 @@ func _physics_process(delta: float) -> void:
 			$Animacao.stop()
 			$Animacao.frame = 2
 			
-			
-			#if $Animacao.animation == "pulo_dir" and $Animacao.frame == 2:
-				#$Animacao.pause()
-		
-			#if $Animacao.animation == "pulo_esq" and $Animacao.frame == 2:
-				#$Animacao.pause()
+	velocity.y += GRAVITY * fall_multiplier * delta
+
 	velocity.x = direction_velocity.x * velocidade
 	
-	#print(pulando)
 	
 	
 	move_and_slide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byasu87s3xlay"]
+[gd_scene load_steps=14 format=3 uid="uid://byasu87s3xlay"]
 
 [ext_resource type="Script" uid="uid://hj0i5208ok84" path="res://scenes/CenasPlayer/player.gd" id="1_oprun"]
 [ext_resource type="Texture2D" uid="uid://ghnpdpb3xovb" path="res://graphics/player/arremessavel/arremessando.png" id="2_lym5t"]
@@ -8,9 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://be1r34hannxc7" path="res://graphics/player/running/frames/run_1.png" id="6_lym5t"]
 [ext_resource type="Texture2D" uid="uid://hg12uvxhbxbl" path="res://graphics/player/running/frames/run_2.png" id="7_m6j54"]
 [ext_resource type="Texture2D" uid="uid://cgqc4hghc1y0u" path="res://graphics/player/running/frames/run_3.png" id="8_d6453"]
-[ext_resource type="Texture2D" uid="uid://bm2yalqpt8rr1" path="res://graphics/player/jumping/frames/jump_1.png" id="9_lym5t"]
-[ext_resource type="Texture2D" uid="uid://bwdlny4la6f3w" path="res://graphics/player/jumping/frames/jump_2.png" id="10_m6j54"]
-[ext_resource type="Texture2D" uid="uid://byj8sy4ev1327" path="res://graphics/player/jumping/frames/jump_3.png" id="11_d6453"]
+[ext_resource type="Texture2D" uid="uid://61okkdbqt6k2" path="res://graphics/player/jumping/frames/jumping.png" id="9_imhy1"]
 [ext_resource type="Texture2D" uid="uid://b8yacdmv0s6uc" path="res://graphics/player/resting/rest.png" id="12_lym5t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8vuu"]
@@ -52,14 +50,8 @@ animations = [{
 "speed": 30.0
 }, {
 "frames": [{
-"duration": 1.7,
-"texture": ExtResource("9_lym5t")
-}, {
-"duration": 1.5,
-"texture": ExtResource("10_m6j54")
-}, {
-"duration": 1.2,
-"texture": ExtResource("11_d6453")
+"duration": 1.0,
+"texture": ExtResource("9_imhy1")
 }],
 "loop": false,
 "name": &"pulo",
@@ -88,7 +80,7 @@ script = ExtResource("1_oprun")
 [node name="Animacao" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_u8vuu")
-animation = &"correr"
+animation = &"pulo"
 speed_scale = 0.45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
