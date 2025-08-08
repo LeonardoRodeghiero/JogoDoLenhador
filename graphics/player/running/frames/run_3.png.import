@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bts5i5kqgyix3"
-path="res://.godot/imported/run_esq_3.png-cf484816104dd1f2279604de5ad4ea92.ctex"
+uid="uid://cgqc4hghc1y0u"
+path="res://.godot/imported/run_3.png-3a6ad9cbf6c8083bdc7a1e12deb9acac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/player/running/esq/run_esq_3.png"
-dest_files=["res://.godot/imported/run_esq_3.png-cf484816104dd1f2279604de5ad4ea92.ctex"]
+source_file="res://graphics/player/running/frames/run_3.png"
+dest_files=["res://.godot/imported/run_3.png-3a6ad9cbf6c8083bdc7a1e12deb9acac.ctex"]
 
 [params]
 

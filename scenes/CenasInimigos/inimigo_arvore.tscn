@@ -190,10 +190,10 @@ libraries = {
 }
 
 [node name="AttackArea" type="Area2D" parent="." index="4"]
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
-position = Vector2(-2.5, 6.5)
 shape = SubResource("RectangleShape2D_kjfq5")
 
 [node name="ProgressBar" parent="BarraVida" index="0"]

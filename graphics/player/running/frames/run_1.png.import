@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da8qnd28d5ouw"
-path="res://.godot/imported/attack_esq_1.png-caaa69b74cc7e3d098597b814e7115b0.ctex"
+uid="uid://be1r34hannxc7"
+path="res://.godot/imported/run_1.png-8318e5e4045ef0ddc726c92db5ed0bfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/player/attacking/esq/attack_esq_1.png"
-dest_files=["res://.godot/imported/attack_esq_1.png-caaa69b74cc7e3d098597b814e7115b0.ctex"]
+source_file="res://graphics/player/running/frames/run_1.png"
+dest_files=["res://.godot/imported/run_1.png-8318e5e4045ef0ddc726c92db5ed0bfe.ctex"]
 
 [params]
 
